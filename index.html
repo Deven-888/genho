@@ -7,11 +7,11 @@
   <meta name="description" content="伺服馬達、減速機、變頻與運動控制整合方案。含產品分類、產業應用、最新消息、品牌與支援服務。單檔HTML，可直接部署。">
   <style>
     :root{
-      --bg:#0c1220; --surface:#0f1a30; --muted:#a9b3c9; --line:#233454; --brand:#3cd4c9; --brand2:#81e6b0; --text:#e6eefc;
+      --bg:#fff; --surface:#0f1a30; --muted:#a9b3c9; --line:#233454; --brand:#3cd4c9; --brand2:#81e6b0; --text:#e6eefc;
       --chip:#142446; --pill:#112448; --radius:16px; --shadow:0 12px 30px rgba(0,0,0,.25);
     }
     *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#0b1328,#0b1733);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}
+    body{margin:0;background:linear-gradient(180deg,#f7f8fa,#fafafb);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}
     a{color:var(--brand);text-decoration:none}
     .wrap{max-width:1200px;margin:auto;padding:0 20px}
     header{position:sticky;top:0;z-index:50;background:rgba(9,13,26,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
@@ -89,6 +89,23 @@
       .nav-links{display:none}
       .feature,.news .item,.brands .logo{grid-column:span 12}
     }
+    .hero { position: relative; overflow: hidden; }
+    /*.hero-media { position:absolute; inset:0; z-index:-1; }
+    .hero-video {
+      width:100%; height:100%; object-fit:cover;
+      filter: none;            
+    }*/
+    .hero-media {
+      width: 100%;
+      height: auto; 
+       
+    }
+
+    .hero-video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -140,8 +157,15 @@
   <main>
     <section class="hero">
       <div class="wrap">
-        <h1>運動控制 × 伺服驅動 × 機械傳動<br>一站式整合，為製造升級</h1>
-
+        <div class="hero-media">
+          <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero.jpg">
+            <source src="video.mp4"  type="video/mp4">
+            你的瀏覽器不支援影片。
+          </video>
+        </div>
+      </div>
+    </section>
+    <section class=""hero-text">
         <div class="badges">
           <span class="chip">低背隙減速機</span>
           <span class="chip">伺服馬達與驅動器</span>
