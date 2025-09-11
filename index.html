@@ -40,13 +40,13 @@
     .glow{position:absolute;inset:auto -20% -50% -20%;height:560px;background:radial-gradient(40% 40% at 30% 20%, rgba(60,212,201,.28), transparent 60%), radial-gradient(50% 50% at 65% 70%, rgba(129,230,176,.25), transparent 60%)}
 
     section{padding:48px 0}
-    h2{margin:0 0 8px;font-size:clamp(22px,3vw,32px)}
+    h2{margin:0 0 8px;font-size:clamp(22px,3vw,32px);color: #155191b8;}
     .sub{color:var(--muted);margin:0 0 20px}
 
     /* category tiles */
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .card{grid-column:span 6;background:linear-gradient(180deg,#0f1b34,#0d1730);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:0 0 6px}
+    .card{grid-column:span 6;background: white;border: 2px solid #007BFF;border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6p;color: #375e89;}
     .card p{color:var(--muted);margin:6px 0 0}
     .card .act{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
     .card .act a{padding:8px 12px;border-radius:8px;border:1px solid var(--line)}
@@ -109,7 +109,43 @@
       display: block;
     }
 
-    
+    .capabilities { margin-block: 32px; }
+    .capabilities h2 { margin: 0 0 12px; font-weight: 800; }
+
+    .caps {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin: 0; padding: 0;
+    }
+
+    .cap {
+      grid-column: span 6;
+      background: #fff;                 /* 或 transparent */
+      border: 2px solid #007BFF;        /* 品牌藍框線 */
+      border-radius: 12px;               /* 也可用 var(--radius) */
+      padding: 16px 18px;
+    }
+
+    .cap dt {
+      margin: 0 0 6px;
+      font-weight: 800;
+      color: #0f1b34;                    /* 或 var(--title) */
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .cap dd {
+      margin: 0;
+      color: #4b5563;                    /* 或 var(--muted) */
+      line-height: 1.6;
+    }
+
+    .icon { font-size: 1.2em; }
+
+    /* 窄螢幕改為單欄 */
+    @media (max-width: 768px){
+      .cap { grid-column: span 12; }
+}
   </style>
 </head>
 <body>
@@ -187,7 +223,7 @@
     <section id="products">
       <div class="wrap">
         <h2>產品分類</h2>
-        <p class="sub">依照運動控制、伺服驅動與機械傳動三大領域進入，支援選型與規格比對。</p>
+        
         <div class="grid">
           <article class="card" id="p-servo">
             <h3>伺服驅動與馬達</h3>
@@ -222,6 +258,34 @@
             </div>
           </article>
         </div>
+      </div>
+      
+    </section>
+    <section class="capabilities">
+      <h2>我們的核心能力</h2>
+      <dl class="caps">
+        <div class="cap">
+          <dt><span class="icon" aria-hidden="true">📦</span> 產品種類齊全</dt>
+          <dd>包括擺線、齒輪、蝸輪、螺旋、軸上型與微型減速機等多款機型，能夠滿足從小型應用到大型重載的不同場景需求。</dd>
+        </div>
+
+        <div class="cap">
+          <dt><span class="icon" aria-hidden="true">⚙️</span> 行業解決方案</dt>
+          <dd>應用於機械手臂、輸送系統、自動化組裝、電梯與大型設備等，提供客製化與系統整合服務。</dd>
+        </div>
+
+        <div class="cap">
+          <dt><span class="icon" aria-hidden="true">✅</span> 品質與信賴保證</dt>
+          <dd>每件產品均通過嚴謹測試與品質控管，依專案環境條件搭配最適合的產品，確保性能與壽命。</dd>
+        </div>
+
+        <div class="cap">
+          <dt><span class="icon" aria-hidden="true">🤝</span> 專業服務與售後支援</dt>
+          <dd>不只是銷售，更提供長期的產品維護、定期檢查與即時替換，與客戶建立長期合作和信任。</dd>
+        </div>
+      </dl>
+      <div class="cap-image">
+        <img src="images/core-abilities.png" alt="我們的核心能力結構圖" width="800">
       </div>
     </section>
 
