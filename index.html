@@ -412,19 +412,13 @@
 
 <style>
   .floating-line {
-    position: fixed;
-    right: 20px;             /* 與右邊距離 */
-    bottom: 20px;            /* 與底部距離 */
-    width: 56px;
-    height: 56px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: #06C755;     /* 綠底，保證看得到 */
-    box-shadow: 0 8px 20px rgba(0,0,0,.18);
-    z-index: 2147483647;     /* 永遠在最上層 */
-    transition: transform .15s ease, box-shadow .15s ease;
-  }
+  position: fixed;
+  right: max(10px, env(safe-area-inset-right)); /* 至少留 10px 安全距離 */
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  z-index: 2147483647;
+}
   .floating-line:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 24px rgba(0,0,0,.22);
