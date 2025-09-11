@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>工業自動化整合｜伺服馬達・減速機・運動控制</title>
+  <meta name="description" content="伺服馬達、減速機、變頻與運動控制整合方案。含產品分類、產業應用、最新消息、品牌與支援服務。單檔HTML，可直接部署。">
+  <style>
+    :root{
+      --bg:#0c1220; --surface:#0f1a30; --muted:#a9b3c9; --line:#233454; --brand:#3cd4c9; --brand2:#81e6b0; --text:#e6eefc;
+      --chip:#142446; --pill:#112448; --radius:16px; --shadow:0 12px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#0b1328,#0b1733);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .wrap{max-width:1200px;margin:auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(9,13,26,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;gap:16px;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+    .brand svg{width:28px;height:28px}
+    .spacer{flex:1}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-links > details{position:relative}
+    .nav-links summary{list-style:none;cursor:pointer;padding:8px 10px;border-radius:8px}
+    .nav-links summary::-webkit-details-marker{display:none}
+    .menu{position:absolute;top:44px;left:0;display:grid;grid-template-columns:repeat(3, minmax(180px,1fr));gap:12px;background:var(--surface);border:1px solid var(--line);padding:14px;border-radius:12px;box-shadow:var(--shadow);min-width:640px}
+    .menu a{display:block;padding:8px 10px;border-radius:8px;color:#dce8ff;border:1px solid transparent}
+    .menu a:hover{background:#0c1730;border-color:#23406f}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:700;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#071424;border:0}
+    .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--text)}
+    .mobile{display:none}
+
+    /* hero */
+    .hero{position:relative;padding:72px 0 48px;border-bottom:1px solid var(--line)}
+    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.12;margin:0 0 12px}
+    .hero p{color:var(--muted);max-width:760px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .chip{background:var(--chip);border:1px solid var(--line);padding:7px 12px;border-radius:999px;color:#d7e6ff;font-size:13px}
+    .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .glow{position:absolute;inset:auto -20% -50% -20%;height:560px;background:radial-gradient(40% 40% at 30% 20%, rgba(60,212,201,.28), transparent 60%), radial-gradient(50% 50% at 65% 70%, rgba(129,230,176,.25), transparent 60%)}
+
+    section{padding:48px 0}
+    h2{margin:0 0 8px;font-size:clamp(22px,3vw,32px)}
+    .sub{color:var(--muted);margin:0 0 20px}
+
+    /* category tiles */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{grid-column:span 6;background:linear-gradient(180deg,#0f1b34,#0d1730);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .card p{color:var(--muted);margin:6px 0 0}
+    .card .act{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+    .card .act a{padding:8px 12px;border-radius:8px;border:1px solid var(--line)}
+    .card .act a.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#071424;border:0;font-weight:800}
+
+    /* features */
+    .features{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .feature{grid-column:span 4;background:linear-gradient(180deg,#0f1a33,#0c162b);border:1px solid var(--line);border-radius:14px;padding:16px}
+    .feature h4{margin:6px 0}
+    .feature p{color:var(--muted);margin:4px 0 0}
+
+    /* news */
+    .news{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .news .item{grid-column:span 4;background:#0d172e;border:1px solid var(--line);border-radius:14px;padding:14px}
+    .news time{color:#9cb7ff;font-size:13px}
+
+    /* brands */
+    .brands{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;align-items:center}
+    .brands .logo{grid-column:span 2;background:#0e1a32;border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:center}
+
+    /* table */
+    .table{background:#0f1b33;border:1px solid var(--line);border-radius:14px;overflow:auto}
+    table{width:100%;border-collapse:collapse;min-width:720px}
+    th,td{padding:12px 14px;border-bottom:1px solid #1b2d51;text-align:left}
+    th{background:#102243;color:#dbe9ff;position:sticky;top:0}
+    tr:hover td{background:#0c162b}
+
+    /* footer */
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#9db0ce}
+
+    /* responsive */
+    @media (max-width: 960px){
+      .card{grid-column:span 12}
+      .feature{grid-column:span 6}
+      .news .item{grid-column:span 6}
+      .brands .logo{grid-column:span 3}
+    }
+    @media (max-width: 640px){
+      .mobile{display:block}
+      .nav-links{display:none}
+      .feature,.news .item,.brands .logo{grid-column:span 12}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#" aria-label="brand">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" aria-hidden="true"><path d="M3 12a9 9 0 1 1 18 0" stroke="url(#g)" stroke-width="2"/><path d="M6 12a6 6 0 1 0 12 0" stroke="#81e6b0" stroke-width="2"/><defs><linearGradient id="g" x1="3" y1="3" x2="21" y2="21"><stop stop-color="#3cd4c9"/><stop offset="1" stop-color="#81e6b0"/></linearGradient></defs></svg>
+          <span>精禾科技股份有限公司</span>
+        </a>
+        <div class="spacer"></div>
+        <button class="btn ghost mobile" onclick="document.querySelector('.nav-links')?.classList.toggle('open')">選單</button>
+        <div class="nav-links">
+          <a href="#solutions">解決方案</a>
+          <details>
+            <summary>Products ▾</summary>
+            <div class="menu" role="menu">
+              <div>
+                <strong>Motion Control</strong>
+                <a href="#p-ipc">IPC</a>
+                <a href="#p-ctrl">Motion / CNC / PLC</a>
+                <a href="#p-hmi">HMI / Ethernet / Remote I/O</a>
+                <a href="#p-sense">Sensor / Power / Measurement</a>
+              </div>
+              <div>
+                <strong>VFD & Servo</strong>
+                <a href="#p-vfd">VFD & Energy Saving</a>
+                <a href="#p-servo">Servo Drive / Motor / Linear / DD</a>
+                <a href="#p-slide">Slide & Positioning</a>
+              </div>
+              <div>
+                <strong>Mechanical Transmission</strong>
+                <a href="#p-reducer">Reducer</a>
+                <a href="#p-coupling">Coupling / Power‑Lock</a>
+                <a href="#p-brake">Clutch / Brake</a>
+                <a href="#p-linear">Ball Screw / Linear Guide</a>
+                <a href="#p-bearing">Bearing / Freebear</a>
+              </div>
+            </div>
+          </details>
+          <a href="#brands">合作品牌</a>
+          <a href="#support">技術支援</a>
+          <a class="btn" href="#contact">How to Buy</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <h1>運動控制 × 伺服驅動 × 機械傳動<br>一站式整合，為製造升級</h1>
+
+        <div class="badges">
+          <span class="chip">低背隙減速機</span>
+          <span class="chip">伺服馬達與驅動器</span>
+          <span class="chip">智慧工廠 / 半導體 / 能源</span>
+          <span class="chip">CAD / 規格下載</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn" href="#products">瀏覽產品</a>
+          <a class="btn ghost" href="#solutions">觀看解決方案</a>
+        </div>
+      </div>
+      <div class="glow" aria-hidden="true"></div>
+    </section>
+
+    <section id="products">
+      <div class="wrap">
+        <h2>產品分類</h2>
+        <p class="sub">依照運動控制、伺服驅動與機械傳動三大領域進入，支援選型與規格比對。</p>
+        <div class="grid">
+          <article class="card" id="p-servo">
+            <h3>伺服驅動與馬達</h3>
+            <p>涵蓋伺服驅動器、伺服馬達、直線/直驅馬達、滑台與定位模組，滿足高速、高精度定位需求。</p>
+            <div class="act">
+              <a class="primary" href="#spec">查看規格表</a>
+              <a href="#downloads">下載尺寸圖</a>
+            </div>
+          </article>
+          <article class="card" id="p-reducer">
+            <h3>高精度減速機與傳動</h3>
+            <p>行星、直角、同軸型減速機與聯軸器、緊定套，提供低背隙與高剛性組合，對應多品牌伺服法蘭。</p>
+            <div class="act">
+              <a class="primary" href="#spec">查看規格表</a>
+              <a href="#downloads">選型資料</a>
+            </div>
+          </article>
+          <article class="card" id="p-ctrl">
+            <h3>運動控制與監控</h3>
+            <p>IPC、運動控制卡/CNC/PLC、HMI、Ethernet 與遠端 I/O，整合感測、電源與高精度量測設備。</p>
+            <div class="act">
+              <a class="primary" href="#contact">取得方案</a>
+              <a href="#support">技術支援</a>
+            </div>
+          </article>
+          <article class="card" id="p-pneumatic">
+            <h3>氣動與流體元件</h3>
+            <p>空壓處理組合、電磁閥、汽缸、接頭、真空與流量/簧片開關等，支援工廠多元應用。</p>
+            <div class="act">
+              <a class="primary" href="#contact">索取型錄</a>
+              <a href="#support">維修與RMA</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions">
+      <div class="wrap">
+        <h2>產業解決方案</h2>
+        <p class="sub">智慧工廠、智慧能源、醫療/食品、自動化半導體與 AIoT 場景的整合實踐。</p>
+        <div class="features">
+          <div class="feature">
+            <h4>Smart Manufacturing</h4>
+            <p>以運動控制 + 機械傳動的模組化方案，縮短開發週期並提升稼動率。</p>
+          </div>
+          <div class="feature">
+            <h4>Semiconductor</h4>
+            <p>低粒徑污染的直驅/線馬方案與高剛性定位平台，滿足潔淨室需求。</p>
+          </div>
+          <div class="feature">
+            <h4>Smart Energy</h4>
+            <p>VFD 節能、儲能/充電樁配套與能源監控平台，支持 ESG 指標。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="wrap">
+        <h2>最新消息</h2>
+        <p class="sub">展會、研討會與新品資訊。</p>
+        <div class="news">
+          <article class="item"><time>2025‑08‑20</time><h3>自動化展｜整合展示伺服減速一體方案</h3><p>現場示範行星減速機搭配 750W 伺服定位平台與視覺校正。</p></article>
+          <article class="item"><time>2025‑06‑15</time><h3>研討會｜SECS/GEM 工廠數位化</h3><p>分享半導體產線資料連線與監控實務。</p></article>
+          <article class="item"><time>2025‑05‑30</time><h3>新品｜中空軸直角減速機</h3><p>低背隙 ≤ 5 arc‑min、減速比 3~100:1，法蘭多規格可選。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands">
+      <div class="wrap">
+        <h2>合作品牌</h2>
+        <p class="sub">展示主要代理/合作夥伴（可替換為實際Logo）。</p>
+        <div class="brands">
+          <div class="logo"><span>Brand A</span></div>
+          <div class="logo"><span>Brand B</span></div>
+          <div class="logo"><span>Brand C</span></div>
+          <div class="logo"><span>Brand D</span></div>
+          <div class="logo"><span>Brand E</span></div>
+          <div class="logo"><span>Brand F</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="spec">
+      <div class="wrap">
+        <h2>規格速覽</h2>
+        <p class="sub">示範規格表：可替換為實際產品型號、減速比、額定扭矩與容許背隙等。</p>
+        <div class="table">
+          <table>
+            <thead>
+              <tr><th>型號</th><th>系列</th><th>減速比</th><th>額定扭矩</th><th>背隙</th><th>對應伺服法蘭</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>PX60‑L</td><td>行星（低背隙）</td><td>3~100</td><td>35 N·m</td><td>≤ 5 arc‑min</td><td>60/70</td></tr>
+              <tr><td>RX90‑H</td><td>直角（高剛性）</td><td>5~50</td><td>120 N·m</td><td>≤ 8 arc‑min</td><td>80/90</td></tr>
+              <tr><td>IN120‑S</td><td>同軸（標準）</td><td>3~30</td><td>180 N·m</td><td>≤ 10 arc‑min</td><td>110/130</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="downloads">
+      <div class="wrap">
+        <h2>資料下載</h2>
+        <p class="sub">提供型錄、2D/3D 圖檔與操作手冊（示範連結）。</p>
+        <div class="grid">
+          <div class="card"><h3>產品型錄</h3><p class="muted">PDF / 15 MB</p><div class="act"><a class="primary" href="#">下載</a><a href="#">線上瀏覽</a></div></div>
+          <div class="card"><h3>CAD / STEP</h3><p class="muted">共用介面尺寸檔</p><div class="act"><a class="primary" href="#">下載</a><a href="#">尺寸表</a></div></div>
+          <div class="card"><h3>使用手冊</h3><p class="muted">驅動器參數設定</p><div class="act"><a class="primary" href="#">下載</a><a href="#">FAQ</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="wrap">
+        <h2>支援服務</h2>
+        <p class="sub">RMA / 技術支援 / 保固說明與據點。</p>
+        <div class="features">
+          <div class="feature"><h4>RMA</h4><p>提供維修申請與維修進度查詢。</p></div>
+          <div class="feature"><h4>Technical Service</h4><p>線上諮詢、到廠調機與教育訓練。</p></div>
+          <div class="feature"><h4>Warranty</h4><p>標準保固政策與延伸保固方案。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <h2>How to Buy｜聯絡我們</h2>
+        <p class="sub">留下需求，取得選型與報價建議。</p>
+        <form onsubmit="event.preventDefault(); alert('已送出（示範）。');" class="grid" aria-label="contact form">
+          <div class="card" style="grid-column:span 6">
+            <label>公司 / 姓名<br><input required style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"></label>
+          </div>
+          <div class="card" style="grid-column:span 6">
+            <label>Email / 電話<br><input required type="email" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"></label>
+          </div>
+          <div class="card" style="grid-column:span 12">
+            <label>需求描述<br><textarea rows="4" style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"></textarea></label>
+          </div>
+          <div style="grid-column:span 12"><button class="btn" type="submit">送出需求</button></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="grid" style="align-items:flex-start">
+        <div class="card" style="grid-column:span 6">
+          <strong>精禾科技股份有限公司</strong>
+         
+        </div>
+        <div class="card" style="grid-column:span 3">
+          <strong>關於</strong>
+          <p class="sub"><a href="#">公司簡介</a> · <a href="#">里程碑</a> · <a href="#">投資人</a></p>
+        </div>
+        <div class="card" style="grid-column:span 3">
+          <strong>快速連結</strong>
+          <p class="sub"><a href="#support">支援</a> · <a href="#downloads">下載</a> · <a href="#contact">聯絡</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 關閉其他 details 以模擬單一開啟的 mega menu 體驗
+    document.querySelectorAll('.nav-links details').forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) document.querySelectorAll('.nav-links details').forEach(o => { if (o!==d) o.removeAttribute('open'); });
+      });
+    });
+  </script>
+</body>
+</html>
