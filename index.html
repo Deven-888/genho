@@ -398,7 +398,7 @@
   <!----=============================================-->
 <!-- 浮動 LINE 按鈕：請放在 </body> 前 -->
 <a
-  href="https://page.line.me/yourlineid"   
+  href="https://page.line.me/yourlineid"
   class="floating-line"
   target="_blank"
   rel="noopener"
@@ -411,33 +411,48 @@
 </a>
 
 <style>
-  .floating-line {
-  position: fixed;
-  right: max(10px, env(safe-area-inset-right)); /* 至少留 10px 安全距離 */
-  bottom: max(20px, env(safe-area-inset-bottom));
-  width: 56px;
-  height: 56px;
-  z-index: 2147483647;
-}
-  .floating-line:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(0,0,0,.22);
-  }
-  .floating-line svg {
-    width: 70%;
-    height: 70%;
-  }
+  .floating-line{
+    position: fixed;
+    /* 先給通用的安全距離，配合 clamp() 在窄螢幕時自動往左縮 */
+    right: clamp(8px, 4vw, 20px);
+    bottom: clamp(12px, 4vh, 20px);
 
-  /* 手機放大一點，避免太小 */
-  @media (max-width: 480px) {
-    .floating-line {
-      width: 64px;
-      height: 64px;
-      right: 16px;
-      bottom: 80px;   /* 往上移，避免蓋到手機底部工具列 */
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #06C755;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    z-index: 2147483647;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .floating-line:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+  .floating-line svg{ width: 70%; height: 70%; }
+
+  /* 支援 iPhone 瀏海安全區：在原本距離上再加 safe-area */
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    .floating-line{
+      right: calc(clamp(8px, 4vw, 20px) + env(safe-area-inset-right));
+      bottom: calc(clamp(12px, 4vh, 20px) + env(safe-area-inset-bottom));
     }
   }
+
+  /* 超窄螢幕再微調，避免貼邊或被底部工具列遮到 */
+  @media (max-width: 360px){
+    .floating-line{
+      right: 10px;
+      bottom: 80px;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  /* 列印時隱藏 */
+  @media print{ .floating-line{ display: none !important; } }
 </style>
+
+
 <!----=============================================-->
 </body>
 </html>
