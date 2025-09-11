@@ -97,7 +97,9 @@
     }*/
     .hero-media {
       width: 100%;
-      height: auto; 
+      height: auto;
+      display: flex;
+      align-items: flex-start; /* 靠上 */
        
     }
 
@@ -105,6 +107,39 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+
+    .floating-line{
+      position: fixed;
+      right: max(16px, env(safe-area-inset-right));
+      bottom: calc(max(16px, env(safe-area-inset-bottom)) + 8px);
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+      z-index: 9999;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .floating-line:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
+    .floating-line:active{ transform: translateY(0); }
+    .floating-line svg{ width: 100%; height: 100%; border-radius: 50%; }
+
+    /* 手機：按鈕稍大一點 */
+    @media (max-width: 480px){
+      .floating-line{ width: 64px; height: 64px; }
+    }
+
+    /* 列印時不要顯示 */
+    @media print{
+      .floating-line{ display: none !important; }
+    }
+
+    /* 如果使用者偏好少動態，關掉浮動動畫 */
+    @media (prefers-reduced-motion: reduce){
+      .floating-line{ transition: none; }
     }
   </style>
 </head>
@@ -359,5 +394,21 @@
       });
     });
   </script>
+
+  <!----=============================================-->
+  <a
+  href="https://page.line.me/yourlineid"  
+  class="floating-line"
+  target="_blank"
+  rel="noopener"
+  aria-label="加 LINE 與我們聯繫"
+>
+  <!-- LINE 圓形圖示（SVG，不需外部圖檔） -->
+  <svg viewBox="0 0 36 36" aria-hidden="true">
+    <circle cx="18" cy="18" r="18" fill="#06C755"></circle>
+    <path fill="#fff" d="M26.5 16.3c0-3.7-3.8-6.7-8.5-6.7s-8.5 3-8.5 6.7c0 3.4 3.2 6.2 7.4 6.7.29.04.67.12.77.28.09.14.06.36.03.51l-.12.71c-.03.14-.11.56.49.31 2.19-.96 4.44-2.74 6.06-4.17 1.84-1.62 2.58-3.28 2.58-4.31zM12.9 17.6h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4z"/>
+  </svg>
+</a>
+<!----=============================================-->
 </body>
 </html>
