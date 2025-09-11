@@ -410,22 +410,19 @@
   </svg>
 </a>
 <style>
-  .floating-line{
-    position: fixed;
-    right: 80px;               /* 先給基準值，確保相容舊機 */
-    bottom: 16px;              /* 先給基準值，確保相容舊機 */
+  .floating-line {
+    position: fixed;        /* 固定在螢幕，不隨內容滾動 */
+    right: 20px;            /* 與右邊距離 */
+    bottom: 20px;           /* 與底部距離 */
     width: 56px;
     height: 56px;
     display: grid;
     place-items: center;
     border-radius: 50%;
     box-shadow: 0 8px 20px rgba(0,0,0,.18);
-    z-index: 2147483647;       /* 幾乎最高，避免被蓋住 */
-    text-decoration: none;
-    will-change: transform;
-    pointer-events: auto;
-    transition: transform .15s ease, box-shadow .15s ease;
-  }
+    background: white;      /* 建議加個底色，避免在淺背景消失 */
+    z-index: 99999;         /* 保證浮在最上層 */
+}
   /* 若支援安全區，覆寫 bottom/right（iPhone 瀏海機種更貼齊） */
   @supports (bottom: env(safe-area-inset-bottom)){
     .floating-line{
