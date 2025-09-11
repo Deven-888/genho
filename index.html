@@ -396,49 +396,52 @@
   </script>
 
   <!----=============================================-->
-  <a
-  href="https://page.line.me/yourlineid"  
+<!-- 浮動 LINE 按鈕：請放在 </body> 前 -->
+<a
+  href="https://page.line.me/yourlineid"   
   class="floating-line"
   target="_blank"
   rel="noopener"
   aria-label="加 LINE 與我們聯繫"
 >
-  <!-- LINE 圓形圖示（SVG，不需外部圖檔） -->
   <svg viewBox="0 0 36 36" aria-hidden="true">
     <circle cx="18" cy="18" r="18" fill="#06C755"></circle>
     <path fill="#fff" d="M26.5 16.3c0-3.7-3.8-6.7-8.5-6.7s-8.5 3-8.5 6.7c0 3.4 3.2 6.2 7.4 6.7.29.04.67.12.77.28.09.14.06.36.03.51l-.12.71c-.03.14-.11.56.49.31 2.19-.96 4.44-2.74 6.06-4.17 1.84-1.62 2.58-3.28 2.58-4.31zM12.9 17.6h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4zm3.3 0h-1.4v-4h1.4v4z"/>
   </svg>
 </a>
+
 <style>
   .floating-line {
-    position: fixed;        /* 固定在螢幕，不隨內容滾動 */
-    right: 20px;            /* 與右邊距離 */
-    bottom: 20px;           /* 與底部距離 */
+    position: fixed;
+    right: 20px;             /* 與右邊距離 */
+    bottom: 20px;            /* 與底部距離 */
     width: 56px;
     height: 56px;
     display: grid;
     place-items: center;
     border-radius: 50%;
+    background: #06C755;     /* 綠底，保證看得到 */
     box-shadow: 0 8px 20px rgba(0,0,0,.18);
-    background: white;      /* 建議加個底色，避免在淺背景消失 */
-    z-index: 99999;         /* 保證浮在最上層 */
-}
-  /* 若支援安全區，覆寫 bottom/right（iPhone 瀏海機種更貼齊） */
-  @supports (bottom: env(safe-area-inset-bottom)){
-    .floating-line{
-      right: calc(16px + env(safe-area-inset-right));
-      bottom: calc(16px + env(safe-area-inset-bottom));
-    }
+    z-index: 2147483647;     /* 永遠在最上層 */
+    transition: transform .15s ease, box-shadow .15s ease;
   }
-  .floating-line:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.22); }
-  .floating-line:active{ transform: translateY(0); }
-  .floating-line svg{ width: 100%; height: 100%; border-radius: 50%; }
+  .floating-line:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,.22);
+  }
+  .floating-line svg {
+    width: 70%;
+    height: 70%;
+  }
 
-  @media (max-width: 480px){
-    .floating-line{ width: 64px; height: 64px; }
-  }
-  @media print{
-    .floating-line{ display: none !important; }
+  /* 手機放大一點，避免太小 */
+  @media (max-width: 480px) {
+    .floating-line {
+      width: 64px;
+      height: 64px;
+      right: 16px;
+      bottom: 80px;   /* 往上移，避免蓋到手機底部工具列 */
+    }
   }
 </style>
 <!----=============================================-->
