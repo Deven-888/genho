@@ -37,7 +37,7 @@
     .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
     .chip{background:var(--chip);border:1px solid var(--line);padding:7px 12px;border-radius:999px;color:#d7e6ff;font-size:13px}
     .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-    .glow{position:absolute;inset:auto -20% -50% -20%;height:560px;background:radial-gradient(40% 40% at 30% 20%, rgba(60,212,201,.28), transparent 60%), radial-gradient(50% 50% at 65% 70%, rgba(129,230,176,.25), transparent 60%)}
+    /*.glow{position:absolute;inset:auto -20% -50% -20%;height:560px;background:radial-gradient(40% 40% at 30% 20%, rgba(60,212,201,.28), transparent 60%), radial-gradient(50% 50% at 65% 70%, rgba(129,230,176,.25), transparent 60%)}*/
 
     section{padding:48px 0}
     h2{margin:0 0 8px;font-size:clamp(22px,3vw,32px);color: #155191b8;}
@@ -87,7 +87,7 @@
     @media (max-width: 640px){
       .mobile{display:block}
       .nav-links{display:none}
-      .feature,.news .item,.brands .logo{grid-column:span 12}
+      .feature,.news .item,.brands .logo{grid-column:span 4}
     }
     /*.hero { position: relative; overflow: hidden; }
     /*.hero-media { position:absolute; inset:0; z-index:-1; }
@@ -259,20 +259,17 @@
             <h2>快速查詢產品</h2>
             <p class="sub">輸入關鍵字（品名、型號或類別），按查詢會在新頁顯示結果。</p>
 
-            <form class="grid" method="get" action="search.php" aria-label="product search">
-            <div class="card" style="grid-column:span 9">
-                <label>關鍵字
-                <input
-                    name="q"
-                    placeholder="例如：行星減速機、PX60、伺服馬達"
-                    style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"
-                    required>
-                </label>
-            </div>
-            <div class="card" style="grid-column:span 3; display:flex; align-items:end;">
-                <button class="btn" type="submit" style="width:100%;">查詢</button>
-            </div>
-            </form>
+           <form style="display:flex; gap:10px;" method="get" action="search.php" aria-label="product search">
+            <label style="flex:1">
+              關鍵字
+              <input
+                name="q"
+                placeholder="例如：行星減速機、PX60、伺服馬達"
+                style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"
+                required>
+            </label>
+            <button class="btn" type="submit">查詢</button>
+          </form>
         </div>
 
     </section>
