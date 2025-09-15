@@ -87,7 +87,8 @@
     @media (max-width: 640px){
       .mobile{display:block}
       .nav-links{display:none}
-      .feature,.news .item,.brands .logo{grid-column:span 4}
+      .feature,.news .item,.brands {grid-column:span 12}
+      .logo{grid-column:span 4}
     }
     /*.hero { position: relative; overflow: hidden; }
     /*.hero-media { position:absolute; inset:0; z-index:-1; }
