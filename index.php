@@ -182,6 +182,27 @@
       justify-content: center;
       gap: 10px;
     }
+
+    /* map —— responsive embed */
+    .map-embed{
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    /* 16:9 比例，可依需要改成 3/2、4/3 等 */
+    .map-embed::before{
+      content: "";
+      display: block;
+      padding-top: 56.25%;
+    }
+    .map-embed iframe{
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
   </style>
 </head>
 <body>
@@ -197,7 +218,7 @@
         <div class="nav-links">
           <a href="#solutions">解決方案</a>
           <details>
-            <summary>Products ▾</summary>
+            <summary>產品 ▾</summary>
             <div class="menu" role="menu">
               <div>
                 <strong>Motion Control</strong>
@@ -241,34 +262,18 @@
         </div>
   
     </section>-->
-    <section class=""hero-text">
-        <div class="badges">
-          <span class="chip">減速機</span>
-          <span class="chip">伺服馬達與驅動器</span>
-          <span class="chip">智慧工廠 / 半導體 / 能源</span>
-          <span class="chip">CAD / 規格下載</span>
-        </div>
-        <div class="hero-cta">
-          <a class="btn" href="#products">瀏覽產品</a>
-          <a class="btn ghost" href="#solutions">觀看解決方案</a>
-        </div>
-      </div>
-      <div class="glow" aria-hidden="true"></div>
-    </section>
-    <section>
+    
         <div class="wrap">
             <h2>快速查詢產品</h2>
             <p class="sub">輸入關鍵字（品名、型號或類別），按查詢會在新頁顯示結果。</p>
 
            <form style="display:flex; gap:10px;" method="get" action="search.php" aria-label="product search">
-            <label style="flex:1">
-              關鍵字
+            
               <input
                 name="q"
-                placeholder="例如：行星減速機、PX60、伺服馬達"
-                style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#0b1428;color:var(--text)"
+                style="width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:#ffffff;color:var(--text)"
                 required>
-            </label>
+           
             <button class="btn" type="submit">查詢</button>
           </form>
         </div>
@@ -451,6 +456,27 @@
         </form>
       </div>
     </section>
+
+    <section id="map">
+  <div class="wrap">
+    <h2>公司位置</h2>
+    <p class="sub">407台中市西屯區工業區三十八路80號精禾科技股份有限公司）</p>
+    <div class="map-embed" role="region" aria-label="公司地圖">
+      <iframe
+        src="https://www.google.com/maps?q=407台中市西屯區工業區三十八路80號&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p class="sub" style="margin-top:12px">
+      <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=407台中市西屯區工業區三十八路80號" target="_blank" rel="noopener">
+        在 Google 地圖開啟
+      </a>
+    </p>
+  </div>
+</section>
+
   </main>
 
   <footer>
