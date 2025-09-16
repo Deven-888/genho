@@ -266,7 +266,7 @@
        
         <div class="hero-media">
           <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="hero.jpg">
-            <source src="images/video2.mp4"  type="video/mp4">
+            <source src="images/video3.mp4"  type="video/mp4">
             你的瀏覽器不支援影片。
           </video>
         </div>
