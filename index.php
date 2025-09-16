@@ -97,25 +97,25 @@
       filter: none;            
     }*/
     .hero {
-      position: relative;
-      /* 你要的區塊高度：一個螢幕高，或自己調整 */
-      height: 100vh;               /* 或用 clamp(480px, 100svh, 860px) */
-      overflow: hidden;
-    }
+  position: relative;
+  height: 100vh;          /* 桌機滿版 */
+  overflow: hidden;
+}
 
-    /* 讓影片鋪滿整個 hero 區塊 */
-    .hero-media,
-    .hero-video {
-      position: absolute;
-      inset: 0;                    /* top/right/bottom/left: 0 */
-      width: 100%;
-      height: 100%;
-    }
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .hero-video {
-      object-fit: cover;           /* 鋪滿，不留黑邊，會裁切 */
-      object-position: center;     /* 可改 'center top' 把重點放上方 */
-    }
+/* 手機螢幕寬度小於768px 時 */
+@media (max-width: 768px) {
+  .hero {
+    height: 50vh;         /* 高度縮一半，避免太大 */
+  }
+}
 
 /* 不需要設定 .hero-media 的 height:80% 了 */
 
