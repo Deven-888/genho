@@ -90,24 +90,34 @@
       .feature,.news .item,.brands {grid-column:span 12}
       .logo{grid-column:span 4}
     }
-    /*.hero { position: relative; overflow: hidden; }
+    
     /*.hero-media { position:absolute; inset:0; z-index:-1; }
     .hero-video {
       width:100%; height:100%; object-fit:cover;
       filter: none;            
     }*/
-    .hero-media {
-       width:100%; height:80%; object-fit:cover;
-      filter: none;
+    .hero {
+      position: relative;
+      /* 你要的區塊高度：一個螢幕高，或自己調整 */
+      height: 100vh;               /* 或用 clamp(480px, 100svh, 860px) */
+      overflow: hidden;
     }
 
-.hero-video {
-  position: absolute;
-  top: 0;          /* 貼齊最上方 */
-  left: 0;
-  width: 100%;
-  height: auto;    /* 或用 height: 100% 看需求 */
-}
+    /* 讓影片鋪滿整個 hero 區塊 */
+    .hero-media,
+    .hero-video {
+      position: absolute;
+      inset: 0;                    /* top/right/bottom/left: 0 */
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-video {
+      object-fit: cover;           /* 鋪滿，不留黑邊，會裁切 */
+      object-position: center;     /* 可改 'center top' 把重點放上方 */
+    }
+
+/* 不需要設定 .hero-media 的 height:80% 了 */
 
     .capabilities { margin-block: 32px; }
     .capabilities h2 { margin: 0 0 12px; font-weight: 800; }
@@ -251,7 +261,7 @@
     </div>
   </header>
 
-  <main><!--
+  <main>
     <section class="hero">
        
         <div class="hero-media">
@@ -261,7 +271,7 @@
           </video>
         </div>
   
-    </section>-->
+    </section>
     
         <div class="wrap">
             <h2>快速查詢產品</h2>
